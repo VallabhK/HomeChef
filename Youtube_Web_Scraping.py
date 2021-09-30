@@ -6,14 +6,18 @@ Created on Fri Sep 17 20:17:31 2021
 """
 
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import time
 
 driver = webdriver.Chrome('C:/Users/memoh/Downloads/chromeDriverTest/chromedriver_win32/chromedriver')
 driver.get('https://www.youtube.com/')
-text_box = driver.find_element_by_id("search")
-text_box.send_keys("avocado on toast recipe")
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@name='search_query']"))).send_keys("avocado on toast recipe")
+#text_box = driver.find_element_by_id("search")
+#text_box.send_keys("avocado on toast recipe")
 search_button = driver.find_element_by_id("search-icon-legacy")
 search_button.click()
 time.sleep(5)
