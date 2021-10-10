@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>580</width>
-    <height>603</height>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string/>
@@ -28,34 +34,11 @@
    <property name="font">
     <font>
      <family>Cambria</family>
-     <pointsize>10</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius:50;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="CancelButton">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>10</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CLOSE</string>
-   </property>
-  </widget>
-  <widget class="QGraphicsView" name="VideoRecommeder">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>290</y>
-     <width>191</width>
-     <height>171</height>
-    </rect>
    </property>
   </widget>
   <widget class="QTextEdit" name="RecipeInformation">
@@ -67,6 +50,11 @@
      <height>171</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+    </font>
+   </property>
   </widget>
   <widget class="QGraphicsView" name="CalorieInfo">
    <property name="geometry">
@@ -76,6 +64,11 @@
      <width>561</width>
      <height>121</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="ChefLogo">
@@ -109,6 +102,36 @@
      <height>441</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>441</width>
+     <height>441</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>441</width>
+     <height>441</height>
+    </size>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>441</width>
+     <height>441</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>441</width>
+     <height>441</height>
+    </size>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -119,57 +142,19 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="PleaseEnterLabel">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>240</y>
-     <width>131</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/Search/SearchButton.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="elements/Background.qrc">:/Search/SearchButton.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>240</y>
-     <width>131</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color : rgba(0, 0, 0,0);</string>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
+     <x>330</x>
      <y>190</y>
-     <width>201</width>
+     <width>301</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cambria</family>
-     <pointsize>14</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
@@ -198,17 +183,160 @@
     <bool>false</bool>
    </property>
   </widget>
-  <zorder>pushButton_2</zorder>
+  <widget class="QPushButton" name="searchButton">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>240</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 141, 2, 255), stop:0.507463 rgba(0, 167, 4, 255), stop:1 rgba(0, 139, 0, 255));
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string notr="true">SEARCH</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ResetButton">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>240</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 141, 2, 255), stop:0.507463 rgba(0, 167, 4, 255), stop:1 rgba(0, 139, 0, 255));
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string notr="true">RESET</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="YoutubeLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>280</y>
+     <width>111</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Youtube/youtube-logo-png-46020.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="elements/Background.qrc">:/Youtube/youtube-logo-png-46020.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>290</y>
+     <width>191</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="RecipeLabel">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>290</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Recipe</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="CalorieLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>470</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cambria</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Calorie Information</string>
+   </property>
+  </widget>
   <zorder>label_2</zorder>
   <zorder>ChefLogo_2</zorder>
-  <zorder>label</zorder>
   <zorder>RecipeSearchString</zorder>
-  <zorder>CancelButton</zorder>
-  <zorder>VideoRecommeder</zorder>
   <zorder>RecipeInformation</zorder>
   <zorder>CalorieInfo</zorder>
   <zorder>ChefLogo</zorder>
-  <zorder>label_3</zorder>
+  <zorder>PleaseEnterLabel</zorder>
+  <zorder>searchButton</zorder>
+  <zorder>ResetButton</zorder>
+  <zorder>textEdit</zorder>
+  <zorder>YoutubeLabel</zorder>
+  <zorder>RecipeLabel</zorder>
+  <zorder>CalorieLabel</zorder>
  </widget>
  <resources>
   <include location="elements/Background.qrc"/>
