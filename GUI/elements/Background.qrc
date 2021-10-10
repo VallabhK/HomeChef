@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>ChefLogo_NoBackground.png</file>
+  </qresource>
+  <qresource prefix="Youtube">
+    <file>youtube-logo-png-46020.png</file>
+  </qresource>
+  <qresource prefix="BG">
+    <file>Untitled design.png</file>
+  </qresource>
+  <qresource prefix="Search">
+    <file>SearchButton.png</file>
+  </qresource>
+  <qresource prefix="HomeCheflogo">
+    <file>homechef_Logo_NoBackground.png</file>
+  </qresource>
+</RCC>
