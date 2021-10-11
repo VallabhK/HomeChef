@@ -5,10 +5,34 @@
 # Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
+from pexpect import searcher_string
+
+from v2_pdf_scraping import get_recipe
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
+
+    def resetButtonClicked(self):
+        self.RecipeInformation.setText("")
+        self.textEdit.setText("")
+
+    def searchButtonClicked(self):
+
+        searchString = self.RecipeSearchString.toPlainText()
+
+        if(len(searchString) > 0):
+            RecipeInformation = str(get_recipe(searchString))
+            self.RecipeInformation.setText(RecipeInformation)
+        else:
+            msg = QtWidgets.QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText("Please enter a valid food item")
+            msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            msg.exec_()
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(580, 600)
@@ -17,7 +41,7 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
         Form.setSizePolicy(sizePolicy)
-        Form.setWindowTitle("")
+        Form.setWindowTitle("HomeChef")
         self.RecipeSearchString = QtWidgets.QTextEdit(Form)
         self.RecipeSearchString.setEnabled(True)
         self.RecipeSearchString.setGeometry(QtCore.QRect(250, 190, 321, 41))
@@ -27,6 +51,7 @@ class Ui_Form(object):
         self.RecipeSearchString.setFont(font)
         self.RecipeSearchString.setStyleSheet("border-radius:50;")
         self.RecipeSearchString.setObjectName("RecipeSearchString")
+        self.RecipeSearchString.setPlaceholderText("Please enter the food item")
         self.RecipeInformation = QtWidgets.QTextEdit(Form)
         self.RecipeInformation.setGeometry(QtCore.QRect(210, 290, 361, 171))
         font = QtGui.QFont()
@@ -148,12 +173,15 @@ class Ui_Form(object):
         self.RecipeLabel.raise_()
         self.CalorieLabel.raise_()
 
+        self.searchButton.clicked.connect(self.searchButtonClicked)
+        self.ResetButton.clicked.connect(self.resetButtonClicked)
+
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        self.PleaseEnterLabel.setText(_translate("Form", "Please enter a food item!"))
+        #self.PleaseEnterLabel.setText(_translate("Form", "Please enter a food item!"))
         self.RecipeLabel.setText(_translate("Form", "Recipe"))
         self.CalorieLabel.setText(_translate("Form", "Calorie Information"))
 

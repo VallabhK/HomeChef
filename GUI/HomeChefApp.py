@@ -1,5 +1,5 @@
 from HomeChef import *
-
+from v2_pdf_scraping import get_recipe
 
 #def searchButtonClicked(self):
 #    self.RecipeSearchString.setText("")
@@ -20,6 +20,8 @@ if __name__ == "__main__":
     ui = Ui_Form()
     ui.setupUi(Form)
     Form.show()
+    #sd = get_recipe('chicken')
+    #print(sd)
     sys.exit(app.exec_())
 
 
