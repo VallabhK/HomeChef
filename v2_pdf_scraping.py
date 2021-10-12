@@ -140,7 +140,3 @@ def get_recipe(search_string):
     for j in get_recipe:
         recipe_info += j + '\n'
     return(recipe_info)
-    
-
-sd = str(get_recipe('chicken'))
-print(sd)
