@@ -154,5 +154,5 @@ def get_recipe(search_string):
         for k in get_recipe:
             for i in k:
                 recipe_info += i + "\n"
-            recipe_info+= '\n'
+            recipe_info+= '\n******************************************\n'
     return((recipe_info), recipe_name)

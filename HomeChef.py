@@ -52,6 +52,8 @@ class Ui_Form(object):
             # Youtube Data Processing
             recipeLinks = []
             recipeLinks = youtubeScraper(recipeData)
+            #print(recipeLinks)
+            recipesMainLinks = recipeLinks.split(",")
 
             self.Recipe1Label.setOpenExternalLinks(True)
             self.Recipe1Label_2.setOpenExternalLinks(True)
@@ -76,9 +78,9 @@ class Ui_Form(object):
             self.Recipe1Label_2.setTextFormat(QtCore.Qt.RichText)
             self.Recipe1Label_3.setTextFormat(QtCore.Qt.RichText)
 
-            self.Recipe1Label.setText(linkTemplate.format(recipeLinks[0], recipeNames[0]))
-            self.Recipe1Label_2.setText(linkTemplate.format(recipeLinks[1], recipeNames[1]))
-            self.Recipe1Label_3.setText(linkTemplate.format(recipeLinks[2], recipeNames[2]))
+            self.Recipe1Label.setText(linkTemplate.format(recipesMainLinks[0], "recipeNames[0]"))
+            self.Recipe1Label_2.setText(linkTemplate.format(recipesMainLinks[1], "recipeNames[1]"))
+            #self.Recipe1Label_3.setText(linkTemplate.format(recipesMainLinks[2], "recipeNames[2]"))
 
             # Calorie Data Processing
             NutritionList = []
