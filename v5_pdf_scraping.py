@@ -1,6 +1,4 @@
 import PyPDF2
-# import numpy as np
-# import os
 
 def get_recipe(search_string):
     
@@ -33,7 +31,7 @@ def get_recipe(search_string):
         e = []
         
         for j in d:
-            if(j.strip() !=''):
+            if(j.strip() !='') and (j.strip() !='TODAY™S') and (j.strip() !='RECIPE'):
                 e.append(j.strip())
         
         recipe2 = e
@@ -147,16 +145,14 @@ def get_recipe(search_string):
             get_recipe.append(recipe_store[i])
             recipe_name.append(recipe_store[i][0])
     
-    recipe_info =""
-
+    recipe_info = ''
+ 
     # converting recipe to string for output
-    if (recipe_number == []):
+    if(recipe_number== []):
         recipe_info = 'Sorry! Receipe for ingredient not avaialble'
     else:
         for k in get_recipe:
             for i in k:
                 recipe_info += i + "\n"
-            #recipe_info += '\n'
-
-    return ((recipe_info), recipe_name)
-
+            recipe_info+= '\n'
+    return((recipe_info), recipe_name)

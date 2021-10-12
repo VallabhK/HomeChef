@@ -26,7 +26,6 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import time
 
-
 class Ui_Form(object):
 
     def resetButtonClicked(self):
@@ -75,19 +74,21 @@ class Ui_Form(object):
             self.Recipe1Label.setTextFormat(QtCore.Qt.RichText)
             self.Recipe1Label_2.setTextFormat(QtCore.Qt.RichText)
             self.Recipe1Label_3.setTextFormat(QtCore.Qt.RichText)
-
-            self.Recipe1Label.setText(linkTemplate.format(recipeLinks[0], recipeNames[0]))
+            print(recipeLinks[0])
+            #self.Recipe1Label.setText(recipeLinks[0])
+            #self.Recipe1Label.setText(linkTemplate.format(recipeLinks[0], recipeNames[0]))
             self.Recipe1Label_2.setText(linkTemplate.format(recipeLinks[1], recipeNames[1]))
             self.Recipe1Label_3.setText(linkTemplate.format(recipeLinks[2], recipeNames[2]))
 
             # Calorie Data Processing
-            NutritionList = []
             NutritionList = getCalorieData(searchString)
 
-            self.CalorieValueLabel.setText(NutritionList[0])
-            self.FatLabel.setText(NutritionList[1])
-            self.CarbLabel.setText(NutritionList[2])
-            self.ProteinLabel.setText(NutritionList[3])
+            print(NutritionList[0])
+            print(NutritionList[1])
+            print(NutritionList[2])
+            print(NutritionList[3])
+
+
 
             # X=["Nutrition"]
             # protein = [100]
@@ -117,7 +118,6 @@ class Ui_Form(object):
             msg.setText("Please enter a valid food item")
             msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
             msg.exec_()
-
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -258,25 +258,17 @@ class Ui_Form(object):
         self.Recipe1Label_3.setGeometry(QtCore.QRect(20, 420, 171, 16))
         self.Recipe1Label_3.setText("")
         self.Recipe1Label_3.setObjectName("Recipe1Label_3")
+        self.CalorieInfoDiagram = QtWidgets.QGraphicsView(Form)
+        self.CalorieInfoDiagram.setGeometry(QtCore.QRect(20, 500, 541, 81))
         font = QtGui.QFont()
         font.setFamily("Cambria")
-        font.setPointSize(12)
-        self.CalorieValueLabel = QtWidgets.QLabel(Form)
-        self.CalorieValueLabel.setGeometry(QtCore.QRect(30, 500, 191, 31))
-        self.CalorieValueLabel.setText("")
-        self.CalorieValueLabel.setObjectName("CalorieValueLabel")
-        self.CarbLabel = QtWidgets.QLabel(Form)
-        self.CarbLabel.setGeometry(QtCore.QRect(360, 500, 191, 31))
-        self.CarbLabel.setText("")
-        self.CarbLabel.setObjectName("CarbLabel")
-        self.FatLabel = QtWidgets.QLabel(Form)
-        self.FatLabel.setGeometry(QtCore.QRect(30, 550, 191, 31))
-        self.FatLabel.setText("")
-        self.FatLabel.setObjectName("FatLabel")
-        self.ProteinLabel = QtWidgets.QLabel(Form)
-        self.ProteinLabel.setGeometry(QtCore.QRect(360, 550, 191, 31))
-        self.ProteinLabel.setText("")
-        self.ProteinLabel.setObjectName("ProteinLabel")
+        self.CalorieInfoDiagram.setFont(font)
+        self.CalorieInfoDiagram.setStyleSheet("border: 0")
+        self.CalorieInfoDiagram.setObjectName("CalorieInfoDiagram")
+        self.textBrowser = QtWidgets.QTextBrowser(Form)
+        self.textBrowser.setGeometry(QtCore.QRect(20, 330, 171, 31))
+        self.textBrowser.setStyleSheet("border:0")
+        self.textBrowser.setObjectName("textBrowser")
         self.label_2.raise_()
         self.ChefLogo_2.raise_()
         self.RecipeSearchString.raise_()
@@ -293,10 +285,8 @@ class Ui_Form(object):
         self.Recipe1Label.raise_()
         self.Recipe1Label_2.raise_()
         self.Recipe1Label_3.raise_()
-        self.CalorieValueLabel.raise_()
-        self.CarbLabel.raise_()
-        self.FatLabel.raise_()
-        self.ProteinLabel.raise_()
+        self.CalorieInfoDiagram.raise_()
+
 
         self.searchButton.clicked.connect(self.searchButtonClicked)
         self.ResetButton.clicked.connect(self.resetButtonClicked)
@@ -311,3 +301,5 @@ class Ui_Form(object):
         self.CalorieLabel.setText(_translate("Form", "Calorie Information"))
 
 import Background_rc
+
+

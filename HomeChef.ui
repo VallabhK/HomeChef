@@ -374,22 +374,56 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QGraphicsView" name="CalorieInfoDiagram">
+  <widget class="QLabel" name="CalorieValueLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>500</y>
-     <width>541</width>
-     <height>81</height>
+     <width>191</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Cambria</family>
-    </font>
+   <property name="text">
+    <string/>
    </property>
-   <property name="styleSheet">
-    <string notr="true">border: 0</string>
+  </widget>
+  <widget class="QLabel" name="CarbLabel">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>500</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="FatLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>550</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ProteinLabel">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>550</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label_2</zorder>
@@ -408,7 +442,10 @@ color: rgb(255, 255, 255);</string>
   <zorder>Recipe1Label</zorder>
   <zorder>Recipe1Label_2</zorder>
   <zorder>Recipe1Label_3</zorder>
-  <zorder>CalorieInfoDiagram</zorder>
+  <zorder>CalorieValueLabel</zorder>
+  <zorder>CarbLabel</zorder>
+  <zorder>FatLabel</zorder>
+  <zorder>ProteinLabel</zorder>
  </widget>
  <resources>
   <include location="elements/Background.qrc"/>
