@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'HomeChef.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
+"""
+# Data Focused Python B1
+# Created by: 
+# 1. Vallabh Karanjkar-vkaranjk
+# 2. Mohini Jain- mohinij
+# 3. Rohit Jain- rohitj
+# Group 24
+"""
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTextBrowser
-from PyQt5.QtGui import QPixmap, QTextCursor
+from PyQt5.QtWidgets import QSizePolicy
 
-from pdfScraping import get_recipe
 from youtubeScraper import youtubeScraper
 from dataProcessing import getCalorieData
 import Background_rc
@@ -28,7 +32,7 @@ import time
 
 
 class Ui_Form(object):
-
+    #define reset button functionality
     def resetButtonClicked(self):
         self.RecipeInformation.setText("")
         self.textEdit.setText("")
@@ -37,8 +41,14 @@ class Ui_Form(object):
         self.Recipe1Label.setText("")
         self.Recipe1Label_2.setText("")
         self.Recipe1Label_3.setText("")
-        # self.CalorieInfoDiagram.clearMask()
-
+        self.Recipe1Label.setText("")
+        self.Recipe1Label_2.setText("")
+        self.Recipe1Label_3.setText("")
+        self.CalorieValueLabel.setText("")
+        self.FatLabel.setText("")
+        self.CarbLabel.setText("")
+        self.ProteinLabel.setText("")
+    #define SearchButton Functionality
     def searchButtonClicked(self):
 
         searchString = self.RecipeSearchString.toPlainText()
@@ -48,11 +58,13 @@ class Ui_Form(object):
             # Scrape PDF data to get recipe based on user input
             recipeData = pdfs.get_recipe(searchString)
             self.RecipeInformation.setText(recipeData[0])
-
+            
+            if(len(recipeData[1]) == 0):
+                return
             # Youtube Data Processing
             recipeLinks = []
             recipeLinks = youtubeScraper(recipeData)
-            #print(recipeLinks)
+
             recipesMainLinks = recipeLinks.split(",")
 
             self.Recipe1Label.setOpenExternalLinks(True)
@@ -65,52 +77,33 @@ class Ui_Form(object):
             for recipes in recipeData[1]:
                 recipeNames.append(recipes)
 
-            self.textBrowser = QTextBrowser()
-            self.textBrowser.setOpenExternalLinks(True)
-            self.textBrowser.moveCursor(QTextCursor.Start)
-            self.textBrowser.setStyleSheet('font-size: 30px;')
-            #link1 ='<a '+'href='+ recipeLinks[0]+">"+recipeNames[0]+"</a>"
-            #print(recipeLinks[0])
-            #print(link1)
-            #self.textBrowser.append(link1)
-
+                           
             self.Recipe1Label.setTextFormat(QtCore.Qt.RichText)
             self.Recipe1Label_2.setTextFormat(QtCore.Qt.RichText)
             self.Recipe1Label_3.setTextFormat(QtCore.Qt.RichText)
-
-            self.Recipe1Label.setText(linkTemplate.format(recipesMainLinks[0], "recipeNames[0]"))
-            self.Recipe1Label_2.setText(linkTemplate.format(recipesMainLinks[1], "recipeNames[1]"))
-            #self.Recipe1Label_3.setText(linkTemplate.format(recipesMainLinks[2], "recipeNames[2]"))
+            
+            self.Recipe1Label.setText(" ")
+            self.Recipe1Label_2.setText(" ")
+            self.Recipe1Label_3.setText(" ")
+            
+            print(recipeLinks)
+            
+            self.Recipe1Label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            if(len(recipeNames)>0):
+                self.Recipe1Label.setText(linkTemplate.format(recipesMainLinks[0], recipeNames[0]))
+                if(len(recipeNames)>1):
+                    self.Recipe1Label_2.setText(linkTemplate.format(recipesMainLinks[1], recipeNames[1]))
+                    if(len(recipeNames)>2):
+                        self.Recipe1Label_3.setText(linkTemplate.format(recipesMainLinks[2], recipeNames[2]))
 
             # Calorie Data Processing
             NutritionList = []
             NutritionList = getCalorieData(searchString)
-
+            #Access the links 
             self.CalorieValueLabel.setText(NutritionList[0])
             self.FatLabel.setText(NutritionList[1])
             self.CarbLabel.setText(NutritionList[2])
             self.ProteinLabel.setText(NutritionList[3])
-
-            # X=["Nutrition"]
-            # protein = [100]
-            # carbohydrate = [200]
-            # fats = [300]
-            #
-            # list_fat = list(np.add(protein,carbohydrate))
-            # plt.rcParams["figure.figsize"] = (10, 2)
-            # plt.barh(X, protein,0.1,label="Protein")
-            # plt.barh(X, carbohydrate, 0.1, left=protein, label="Carbohydrate")
-            # plt.barh(X, fats, 0.1, left=list_fat, label="Fats")
-            # plt.xlabel("Total Calories")
-            # plt.ylabel("Price")
-            # plt.title("Nutritional Information")
-            # plt.savefig("Nutrition.png")
-            #
-            # pix = QPixmap("./Nutrition.png")
-            # item = QtWidgets.QGraphicsPixmapItem(pix)
-            # scene = QtWidgets.QGraphicsScence(self)
-            # scene.addItem(item)
-            # self.CalorieInfoDiagram.setScene(scene)
 
         else:
             msg = QtWidgets.QMessageBox()
